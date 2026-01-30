@@ -1,0 +1,110 @@
+{
+  "projects": [
+    {
+      "id": "1769812251612",
+      "name": "Exa Plugin",
+      "description": "OpenClaw plugin for Exa search",
+      "status": "done",
+      "tags": [],
+      "createdAt": "2026-01-30T22:30:51.612Z",
+      "updatedAt": "2026-01-30T22:31:09.834Z"
+    },
+    {
+      "id": "1769812264498",
+      "name": "Project Tracker",
+      "description": "Discord-accessible project tracker",
+      "status": "building",
+      "tags": [
+        "discord",
+        "vibecode"
+      ],
+      "createdAt": "2026-01-30T22:31:04.498Z",
+      "updatedAt": "2026-01-30T22:31:04.498Z"
+    },
+    {
+      "id": "1769812721475",
+      "name": "Night Coder",
+      "description": "Data codes meaningful apps every night while Brian sleeps",
+      "status": "building",
+      "tags": [
+        "automation",
+        "openclaw",
+        "cron"
+      ],
+      "createdAt": "2026-01-30T22:38:41.475Z",
+      "updatedAt": "2026-01-30T22:38:41.475Z"
+    },
+    {
+      "id": "1769812788713",
+      "name": "CLI Password Generator",
+      "description": "Secure password generator for infosec work",
+      "status": "ideas",
+      "tags": [
+        "security",
+        "cli"
+      ],
+      "createdAt": "2026-01-30T22:39:48.713Z",
+      "updatedAt": "2026-01-30T22:39:48.713Z"
+    },
+    {
+      "id": "1769812788713",
+      "name": "Game Library Tracker",
+      "description": "Track your video game collection and play status",
+      "status": "ideas",
+      "tags": [
+        "gaming",
+        "database"
+      ],
+      "createdAt": "2026-01-30T22:39:48.713Z",
+      "updatedAt": "2026-01-30T22:39:48.713Z"
+    },
+    {
+      "id": "1769812788714",
+      "name": "Weather Notifier",
+      "description": "Morning weather summary for Brian's area",
+      "status": "ideas",
+      "tags": [
+        "api",
+        "automation"
+      ],
+      "createdAt": "2026-01-30T22:39:48.714Z",
+      "updatedAt": "2026-01-30T22:39:48.714Z"
+    },
+    {
+      "id": "1769812788715",
+      "name": "News Digest",
+      "description": "Daily security news summary",
+      "status": "ideas",
+      "tags": [
+        "infosec",
+        "news"
+      ],
+      "createdAt": "2026-01-30T22:39:48.715Z",
+      "updatedAt": "2026-01-30T22:39:48.715Z"
+    },
+    {
+      "id": "1769812788716",
+      "name": "Time Tracker",
+      "description": "Track time spent on projects/gaming",
+      "status": "ideas",
+      "tags": [
+        "utility",
+        "productivity"
+      ],
+      "createdAt": "2026-01-30T22:39:48.716Z",
+      "updatedAt": "2026-01-30T22:39:48.716Z"
+    },
+    {
+      "id": "1769812788717",
+      "name": "Quote Collector",
+      "description": "Collect and display daily motivational quotes",
+      "status": "ideas",
+      "tags": [
+        "fun",
+        "api"
+      ],
+      "createdAt": "2026-01-30T22:39:48.717Z",
+      "updatedAt": "2026-01-30T22:39:48.717Z"
+    }
+  ]
+}
