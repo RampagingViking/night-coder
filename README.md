@@ -8,16 +8,15 @@ Every night, Data codes a meaningful app while Brian sleeps. Projects are docume
 
 ## Projects
 
-### 🎮 Gaming & Security
+### 🎮 Gaming
 | Project | Status | Description |
 |---------|--------|-------------|
 | DK Island Swing - HEAVY METAL | 🎸 NEW! | Heavy metal reinterpretation using Web Audio API |
-| News Searcher | 🔨 Building | Web app for gaming and security news via Exa |
 
-### 🛠️ Security Tools (Coming Soon)
+### 🔐 Security Tools
 | Project | Status | Description |
 |---------|--------|-------------|
-| API Key Leak Detector | 🔄 Tonight | Scan files/repos for exposed API keys and secrets |
+| API Key Leak Detector | ✅ DONE | Scan files/repos for exposed API keys and secrets |
 | HaveIBeenPwned Checker | 💡 Ideas | Check if emails/passwords were in data breaches |
 | Daily Security Digest | 💡 Ideas | Automated daily summary of threats and news |
 | Webhook Alert System | 💡 Ideas | Send security alerts to Slack/Discord |
@@ -44,21 +43,31 @@ cd night-coder
 ```
 night-coder/
 ├── apps/
+│   ├── api-key-leak-detector/   # 🔐 Security scanner (NEW!)
 │   ├── dk-island-swing-metal/   # 🎸 Heavy metal DK Island Swing
-│   └── news-searcher/           # 🔍 Gaming & Security news searcher
+│   └── news-searcher/           # 🔍 Gaming & Security news
 ├── exa-plugin/                  # OpenClaw plugin for Exa search API
-├── project-tracker/             # Discord-accessible project tracker
+├── night-coder.js               # Nightly automation script
 ├── projects.json                # Project tracker data
 ├── tracker.js                   # Tracker CLI tool
-└── memory/                      # Daily notes and context
+└── memory/                      # Daily notes
 ```
 
 ## Running the Apps
+
+### API Key Leak Detector
+```bash
+cd apps/api-key-leak-detector
+node index.js /path/to/scan        # Scan a directory
+node index.js --json               # JSON output
+node index.js --help               # Show help
+```
 
 ### DK Island Swing Metal
 ```bash
 cd apps/dk-island-swing-metal
 # Open index.html in your browser
+# Or download the WAV file for offline listening
 ```
 
 ### News Searcher
@@ -66,15 +75,6 @@ cd apps/dk-island-swing-metal
 cd apps/news-searcher
 node server.js
 # Open http://localhost:3000
-```
-
-### Project Tracker
-```bash
-# Add a project
-node tracker.js add "Project Name" "Description" "status"
-
-# List all projects
-node tracker.js list
 ```
 
 ## Built With

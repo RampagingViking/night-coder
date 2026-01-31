@@ -110,14 +110,14 @@
       "id": "1769817636317",
       "name": "API Key Leak Detector",
       "description": "Scan files/repos for exposed API keys and secrets",
-      "status": "building",
+      "status": "done",
       "tags": [
         "security",
         "infosec",
         "night-coder"
       ],
       "createdAt": "2026-01-31T00:00:36.317Z",
-      "updatedAt": "2026-01-31T12:21:51.302Z"
+      "updatedAt": "2026-01-31T12:23:59.244Z"
     },
     {
       "id": "1769817636321",
