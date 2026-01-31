@@ -8,11 +8,28 @@ Every night, Data codes a meaningful app while Brian sleeps. Projects are docume
 
 ## Projects
 
+### 🎮 Gaming & Security
+| Project | Status | Description |
+|---------|--------|-------------|
+| DK Island Swing - HEAVY METAL | 🎸 NEW! | Heavy metal reinterpretation using Web Audio API |
+| News Searcher | 🔨 Building | Web app for gaming and security news via Exa |
+
+### 🛠️ Security Tools (Coming Soon)
+| Project | Status | Description |
+|---------|--------|-------------|
+| API Key Leak Detector | 🔄 Tonight | Scan files/repos for exposed API keys and secrets |
+| HaveIBeenPwned Checker | 💡 Ideas | Check if emails/passwords were in data breaches |
+| Daily Security Digest | 💡 Ideas | Automated daily summary of threats and news |
+| Webhook Alert System | 💡 Ideas | Send security alerts to Slack/Discord |
+| SSL Certificate Monitor | 💡 Ideas | Alert before SSL certificates expire |
+| CVE Alert Tracker | 💡 Ideas | Notify on new vulnerabilities |
+
+### 🔧 Infrastructure
 | Project | Status | Description |
 |---------|--------|-------------|
 | Exa Plugin | ✅ Done | OpenClaw plugin for Exa AI-powered search |
-| Project Tracker | 🔨 Building | Discord-accessible project tracker |
-| Night Coder | 🔨 Building | Automation system for nightly coding |
+| Project Tracker | ✅ Done | Discord-accessible project tracker |
+| Night Coder | ✅ Done | Automation system for nightly coding |
 
 ## Getting Started
 
@@ -24,16 +41,54 @@ cd night-coder
 
 ## Project Structure
 
-- `project-tracker/` - Simple JSON-based project tracker
-- `exa-plugin/` - OpenClaw plugin for Exa search API
-- `apps/` - Nightly coding projects
+```
+night-coder/
+├── apps/
+│   ├── dk-island-swing-metal/   # 🎸 Heavy metal DK Island Swing
+│   └── news-searcher/           # 🔍 Gaming & Security news searcher
+├── exa-plugin/                  # OpenClaw plugin for Exa search API
+├── project-tracker/             # Discord-accessible project tracker
+├── projects.json                # Project tracker data
+├── tracker.js                   # Tracker CLI tool
+└── memory/                      # Daily notes and context
+```
+
+## Running the Apps
+
+### DK Island Swing Metal
+```bash
+cd apps/dk-island-swing-metal
+# Open index.html in your browser
+```
+
+### News Searcher
+```bash
+cd apps/news-searcher
+node server.js
+# Open http://localhost:3000
+```
+
+### Project Tracker
+```bash
+# Add a project
+node tracker.js add "Project Name" "Description" "status"
+
+# List all projects
+node tracker.js list
+```
 
 ## Built With
 
 - Node.js
 - OpenClaw
 - Exa AI Search
+- Web Audio API
 - Vibe Coding ✨
+
+## Schedule
+
+- **10:30pm EST**: Night Coder wakes up
+- **7:00am EST**: New project ready for Brian
 
 ## Author
 

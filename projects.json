@@ -105,6 +105,82 @@
       ],
       "createdAt": "2026-01-30T22:39:48.717Z",
       "updatedAt": "2026-01-30T22:39:48.717Z"
+    },
+    {
+      "id": "1769817636317",
+      "name": "API Key Leak Detector",
+      "description": "Scan files/repos for exposed API keys and secrets",
+      "status": "building",
+      "tags": [
+        "security",
+        "infosec",
+        "night-coder"
+      ],
+      "createdAt": "2026-01-31T00:00:36.317Z",
+      "updatedAt": "2026-01-31T12:21:51.302Z"
+    },
+    {
+      "id": "1769817636321",
+      "name": "HaveIBeenPwned Checker",
+      "description": "Check if emails/passwords were in data breaches",
+      "status": "ideas",
+      "tags": [
+        "security",
+        "infosec"
+      ],
+      "createdAt": "2026-01-31T00:00:36.321Z",
+      "updatedAt": "2026-01-31T00:00:36.321Z"
+    },
+    {
+      "id": "1769817636321",
+      "name": "Daily Security Digest",
+      "description": "Automated daily summary of threats, news, and monitoring results",
+      "status": "ideas",
+      "tags": [
+        "automation",
+        "security",
+        "infosec"
+      ],
+      "createdAt": "2026-01-31T00:00:36.321Z",
+      "updatedAt": "2026-01-31T00:00:36.321Z"
+    },
+    {
+      "id": "1769817636322",
+      "name": "Webhook Alert System",
+      "description": "Send security alerts to Slack/Discord via webhooks",
+      "status": "ideas",
+      "tags": [
+        "automation",
+        "webhook",
+        "security"
+      ],
+      "createdAt": "2026-01-31T00:00:36.322Z",
+      "updatedAt": "2026-01-31T00:00:36.322Z"
+    },
+    {
+      "id": "1769817636323",
+      "name": "SSL Certificate Monitor",
+      "description": "Alert before SSL certificates expire",
+      "status": "ideas",
+      "tags": [
+        "security",
+        "monitoring"
+      ],
+      "createdAt": "2026-01-31T00:00:36.323Z",
+      "updatedAt": "2026-01-31T00:00:36.323Z"
+    },
+    {
+      "id": "1769817636324",
+      "name": "CVE Alert Tracker",
+      "description": "Notify on new vulnerabilities affecting your systems",
+      "status": "ideas",
+      "tags": [
+        "security",
+        "cve",
+        "infosec"
+      ],
+      "createdAt": "2026-01-31T00:00:36.324Z",
+      "updatedAt": "2026-01-31T00:00:36.324Z"
     }
   ]
 }

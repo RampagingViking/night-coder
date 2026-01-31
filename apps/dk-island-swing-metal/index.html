@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK Island Swing - HEAVY METAL VERSION</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 50%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial Black', sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #ff0000, 0 0 40px #ff6600;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff6600; }
+            to { text-shadow: 0 0 30px #ff3300, 0 0 60px #ff9900; }
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        
+        #playBtn {
+            background: linear-gradient(180deg, #ff4444 0%, #cc0000 100%);
+            border: 4px solid #ffaa00;
+            color: white;
+            font-size: 2em;
+            padding: 20px 60px;
+            cursor: pointer;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+        }
+        
+        #playBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
+        }
+        
+        #stopBtn {
+            background: linear-gradient(180deg, #444 0%, #222 100%);
+            border: 2px solid #666;
+            color: #aaa;
+            font-size: 1.5em;
+            padding: 15px 40px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        #stopBtn:hover {
+            background: linear-gradient(180deg, #555 0%, #333 100%);
+            color: #fff;
+        }
+        
+        .visualizer {
+            margin-top: 40px;
+            display: flex;
+            gap: 5px;
+            align-items: flex-end;
+            height: 100px;
+        }
+        
+        .bar {
+            width: 20px;
+            background: linear-gradient(180deg, #ff6600, #ff0000);
+            border-radius: 5px;
+            animation: pulse 0.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { height: 20px; }
+            50% { height: 100px; }
+        }
+        
+        .fire {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(0deg, rgba(255,0,0,0.3) 0%, transparent 100%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🦘 DK ISLAND SWING 🦘</h1>
+    <p class="subtitle">HEAVY METAL VERSION</p>
+    
+    <button id="playBtn">🤘 PLAY 🤘</button>
+    <button id="stopBtn" style="display:none;">STOP</button>
+    
+    <div class="visualizer" id="visualizer">
+        <div class="bar" style="animation-delay: 0s;"></div>
+        <div class="bar" style="animation-delay: 0.1s;"></div>
+        <div class="bar" style="animation-delay: 0.2s;"></div>
+        <div class="bar" style="animation-delay: 0.3s;"></div>
+        <div class="bar" style="animation-delay: 0.4s;"></div>
+        <div class="bar" style="animation-delay: 0.5s;"></div>
+        <div class="bar" style="animation-delay: 0.6s;"></div>
+        <div class="bar" style="animation-delay: 0.7s;"></div>
+        <div class="bar" style="animation-delay: 0.8s;"></div>
+        <div class="bar" style="animation-delay: 0.9s;"></div>
+    </div>
+    
+    <div class="fire"></div>
+
+    <script>
+        let audioCtx = null;
+        let isPlaying = false;
+        let timeoutIds = [];
+        
+        function createDistortedGuitar(freq, duration, time, gainNode, distortion = 5) {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            const distortionNode = audioCtx.createWaveShaper();
+            
+            // Create distortion curve
+            const curve = new Float32Array(44100);
+            for (let i = 0; i < 44100; i++) {
+                const x = (i / 44100) * 2 - 1;
+                curve[i] = Math.tanh(distortion * x);
+            }
+            distortionNode.curve = curve;
+            
+            osc.type = 'sawtooth';
+            osc.frequency.value = freq;
+            
+            gain.gain.setValueAtTime(0.3, time);
+            gain.gain.exponentialRampToValueAtTime(0.01, time + duration - 0.05);
+            
+            osc.connect(distortionNode);
+            distortionNode.connect(gain);
+            gain.connect(gainNode);
+            
+            osc.start(time);
+            osc.stop(time + duration);
+            
+            return osc;
+        }
+        
+        function createBass(freq, duration, time, gainNode) {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'square';
+            osc.frequency.value = freq;
+            
+            gain.gain.setValueAtTime(0.4, time);
+            gain.gain.exponentialRampToValueAtTime(0.01, time + duration - 0.02);
+            
+            osc.connect(gain);
+            gain.connect(gainNode);
+            
+            osc.start(time);
+            osc.stop(time + duration);
+        }
+        
+        function createDrum(time, type, gainNode) {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            if (type === 'kick') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(150, time);
+                osc.frequency.exponentialRampToValueAtTime(30, time + 0.1);
+                gain.gain.setValueAtTime(1, time);
+                gain.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
+            } else if (type === 'snare') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(200, time);
+                gain.gain.setValueAtTime(0.5, time);
+                gain.gain.exponentialRampToValueAtTime(0.01, time + 0.1);
+            } else if (type === 'hihat') {
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(800, time);
+                gain.gain.setValueAtTime(0.1, time);
+                gain.gain.exponentialRampToValueAtTime(0.01, time + 0.05);
+            }
+            
+            osc.connect(gain);
+            gain.connect(gainNode);
+            
+            osc.start(time);
+            osc.stop(time + 0.3);
+        }
+        
+        function playHeavyMetalDK() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            
+            const masterGain = audioCtx.createGain();
+            masterGain.gain.value = 0.7;
+            masterGain.connect(audioCtx.destination);
+            
+            const startTime = audioCtx.currentTime;
+            const bpm = 180; // FAST tempo for metal!
+            const beatDur = 60 / bpm;
+            
+            // Main riff - DISTORTED GUITAR
+            // Based on DK Island Swing melody (simplified)
+            const melody = [
+                { note: 'A3', dur: beatDur * 0.5 },
+                { note: 'E4', dur: beatDur * 0.5 },
+                { note: 'C4', dur: beatDur * 0.5 },
+                { note: 'E4', dur: beatDur * 0.5 },
+                { note: 'A4', dur: beatDur * 0.5 },
+                { note: 'G4', dur: beatDur * 0.5 },
+                { note: 'E4', dur: beatDur * 0.5 },
+                { note: 'C4', dur: beatDur * 0.5 },
+            ];
+            
+            // Metal riff - aggressive 16th notes
+            for (let repeat = 0; repeat < 4; repeat++) { // 4x through
+                for (let i = 0; i < melody.length; i++) {
+                    const freq = noteToFreq(melody[i].note);
+                    createDistortedGuitar(freq, melody[i].dur * 0.8, startTime + (repeat * 8 + i) * beatDur * 0.5, masterGain, 8);
+                }
+            }
+            
+            // Bass - HEAVY
+            const bassLine = ['A2', 'A2', 'E2', 'E2', 'A2', 'G2', 'E2', 'E2'];
+            for (let repeat = 0; repeat < 4; repeat++) {
+                for (let i = 0; i < bassLine.length; i++) {
+                    createBass(noteToFreq(bassLine[i]), beatDur * 0.5, startTime + (repeat * 8 + i) * beatDur * 0.5, masterGain);
+                }
+            }
+            
+            // Drums - FAST DOUBLE KICK
+            for (let i = 0; i < 64; i++) {
+                const drumTime = startTime + i * beatDur * 0.25;
+                if (i % 4 === 0) createDrum(drumTime, 'kick', masterGain);
+                if (i % 4 === 2) createDrum(drumTime, 'snare', masterGain);
+                createDrum(drumTime + beatDur * 0.125, 'hihat', masterGain);
+            }
+            
+            // GUITAR SOLO - INTENSE
+            const soloNotes = ['A5', 'E5', 'A5', 'E5', 'A5', 'G5', 'E5', 'G5', 'A5', 'E5', 'A5', 'E5', 'A5', 'G5', 'E5', 'C5'];
+            for (let i = 0; i < soloNotes.length; i++) {
+                const soloTime = startTime + 16 * beatDur * 0.5 + i * beatDur * 0.25;
+                createDistortedGuitar(noteToFreq(soloNotes[i]), beatDur * 0.2, soloTime, masterGain, 15);
+            }
+            
+            // FINAL RIFF - MAXIMUM OVERDRIVE
+            for (let i = 0; i < 16; i++) {
+                const time = startTime + 24 * beatDur * 0.5 + i * beatDur * 0.25;
+                const freqs = [noteToFreq('A3'), noteToFreq('A4'), noteToFreq('E4'), noteToFreq('C4')];
+                freqs.forEach((f, j) => {
+                    createDistortedGuitar(f, beatDur * 0.2, time + j * beatDur * 0.0625, masterGain, 20);
+                });
+            }
+            
+            // End
+            const endTime = startTime + 32 * beatDur * 0.5;
+            setTimeout(() => {
+                if (isPlaying) playHeavyMetalDK(); // LOOP!
+            }, 32000);
+        }
+        
+        function noteToFreq(note) {
+            const notes = { 'C': 261.63, 'D': 293.66, 'E': 329.63, 'F': 349.23, 'G': 392.00, 'A': 440.00, 'B': 493.88 };
+            const octave = parseInt(note.slice(-1));
+            const freq = notes[note.slice(0, -1)] * Math.pow(2, octave - 4);
+            return freq;
+        }
+        
+        document.getElementById('playBtn').addEventListener('click', function() {
+            isPlaying = true;
+            this.style.display = 'none';
+            document.getElementById('stopBtn').style.display = 'block';
+            playHeavyMetalDK();
+        });
+        
+        document.getElementById('stopBtn').addEventListener('click', function() {
+            isPlaying = false;
+            this.style.display = 'none';
+            document.getElementById('playBtn').style.display = 'block';
+            timeoutIds.forEach(id => clearTimeout(id));
+        });
+    </script>
+</body>
+</html>
