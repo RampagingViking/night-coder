@@ -117,7 +117,7 @@
         "night-coder"
       ],
       "createdAt": "2026-01-31T00:00:36.317Z",
-      "updatedAt": "2026-01-31T12:23:59.244Z"
+      "updatedAt": "2026-01-31T12:41:29.132Z"
     },
     {
       "id": "1769817636321",
@@ -134,15 +134,15 @@
     {
       "id": "1769817636321",
       "name": "Daily Security Digest",
-      "description": "Automated daily summary of threats, news, and monitoring results",
-      "status": "ideas",
+      "description": "Automated daily summary of threats, news, and vulnerabilities",
+      "status": "done",
       "tags": [
         "automation",
         "security",
         "infosec"
       ],
       "createdAt": "2026-01-31T00:00:36.321Z",
-      "updatedAt": "2026-01-31T00:00:36.321Z"
+      "updatedAt": "2026-01-31T12:45:52.058Z"
     },
     {
       "id": "1769817636322",
@@ -173,14 +173,14 @@
       "id": "1769817636324",
       "name": "CVE Alert Tracker",
       "description": "Notify on new vulnerabilities affecting your systems",
-      "status": "ideas",
+      "status": "tonight",
       "tags": [
         "security",
         "cve",
         "infosec"
       ],
       "createdAt": "2026-01-31T00:00:36.324Z",
-      "updatedAt": "2026-01-31T00:00:36.324Z"
+      "updatedAt": "2026-01-31T12:45:52.061Z"
     }
   ]
 }
