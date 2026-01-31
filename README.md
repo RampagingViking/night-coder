@@ -6,31 +6,46 @@ A collection of apps and tools built by Brian with AI assistance (Data).
 
 Every night, Data codes a meaningful app while Brian sleeps. Projects are documented in the project tracker and pushed here for backup and sharing.
 
-## Projects
-
-### 🎮 Gaming
+## 🎮 Gaming
 | Project | Status | Description |
 |---------|--------|-------------|
-| DK Island Swing - HEAVY METAL | 🎸 NEW! | Heavy metal reinterpretation using Web Audio API |
+| DK Island Swing - HEAVY METAL | ✅ Done | Heavy metal reinterpretation using Web Audio API |
 
-### 🔐 Security Tools
+## 🔐 Security Tools
 | Project | Status | Description |
 |---------|--------|-------------|
-| API Key Leak Detector | ✅ DONE | Scan files/repos for exposed API keys and secrets |
+| API Key Leak Detector | ✅ Done | Scan files/repos for exposed API keys and secrets |
+| Daily Security Digest | ✅ Done | Automated daily summary of threats and news |
+| CVE Alert Tracker | 🔄 Tonight | Notify on new vulnerabilities |
 | HaveIBeenPwned Checker | 💡 Ideas | Check if emails/passwords were in data breaches |
-| Daily Security Digest | 💡 Ideas | Automated daily summary of threats and news |
 | Webhook Alert System | 💡 Ideas | Send security alerts to Slack/Discord |
 | SSL Certificate Monitor | 💡 Ideas | Alert before SSL certificates expire |
-| CVE Alert Tracker | 💡 Ideas | Notify on new vulnerabilities |
 
-### 🔧 Infrastructure
+## 🔧 Infrastructure
 | Project | Status | Description |
 |---------|--------|-------------|
 | Exa Plugin | ✅ Done | OpenClaw plugin for Exa AI-powered search |
 | Project Tracker | ✅ Done | Discord-accessible project tracker |
 | Night Coder | ✅ Done | Automation system for nightly coding |
 
-## Getting Started
+## 📁 Project Structure
+
+```
+night-coder/
+├── apps/
+│   ├── api-key-leak-detector/    # 🔐 Scan for exposed secrets
+│   ├── daily-security-digest/     # 📰 Daily security news (Exa-powered!)
+│   ├── dk-island-swing-metal/     # 🎸 Heavy metal DK Island Swing
+│   └── news-searcher/             # 🔍 Gaming & Security news searcher
+├── night-coder.js                 # 🤖 Nightly automation script
+├── post-digest-discord.js         # 📱 Post digest to Discord
+├── daily-digest-discord.js        # 📱 Discord automation
+├── projects.json                 # 📋 Project tracker data
+├── tracker.js                    # 📋 Tracker CLI tool
+└── memory/                       # 📝 Daily notes
+```
+
+## 🚀 Getting Started
 
 Clone this repo:
 ```bash
@@ -38,59 +53,38 @@ git clone https://github.com/RampagingViking/night-coder.git
 cd night-coder
 ```
 
-## Project Structure
-
-```
-night-coder/
-├── apps/
-│   ├── api-key-leak-detector/   # 🔐 Security scanner (NEW!)
-│   ├── dk-island-swing-metal/   # 🎸 Heavy metal DK Island Swing
-│   └── news-searcher/           # 🔍 Gaming & Security news
-├── exa-plugin/                  # OpenClaw plugin for Exa search API
-├── night-coder.js               # Nightly automation script
-├── projects.json                # Project tracker data
-├── tracker.js                   # Tracker CLI tool
-└── memory/                      # Daily notes
+### Run Daily Security Digest
+```bash
+cd apps/daily-security-digest
+node index.js              # Human-readable output
+node index.js --json       # JSON output for scripts
 ```
 
-## Running the Apps
-
-### API Key Leak Detector
+### Run API Key Leak Detector
 ```bash
 cd apps/api-key-leak-detector
-node index.js /path/to/scan        # Scan a directory
-node index.js --json               # JSON output
-node index.js --help               # Show help
+node index.js /path/to/scan
 ```
 
-### DK Island Swing Metal
+### Play DK Island Swing Metal
 ```bash
 cd apps/dk-island-swing-metal
 # Open index.html in your browser
 # Or download the WAV file for offline listening
 ```
 
-### News Searcher
-```bash
-cd apps/news-searcher
-node server.js
-# Open http://localhost:3000
-```
-
-## Built With
-
-- Node.js
-- OpenClaw
-- Exa AI Search
-- Web Audio API
-- Vibe Coding ✨
-
-## Schedule
+## ⏰ Automation Schedule
 
 - **10:30pm EST**: Night Coder wakes up
-- **7:00am EST**: New project ready for Brian
+- **7:00am EST**: Daily Security Digest posted to Discord
 
-## Author
+## 📡 APIs Used
+
+- **Exa AI Search** - For security news and vulnerability tracking
+- **Discord Bot** - For automated daily posts
+- **Web Audio API** - For music generation
+
+## 👤 Author
 
 **Brian** - [RampagingViking](https://github.com/RampagingViking)
 
